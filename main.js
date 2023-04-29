@@ -1,53 +1,32 @@
 function getComputerChoice(){
     var myArray = ["Rock", "Paper", "Scissors"];
     var randomRPS = myArray[Math.floor(Math.random()*myArray.length)];
-    return randomRPS
+    return randomRPS;
 }
 
-function userChoice(){
-    var myArray = ["Rock", "Paper", "Scissors"];
-    let choice = prompt("Choose rock, paper, or scissors!");
-    let lower_choice = choice.toLowerCase();
-    let first_letter = choice[0];
-    let upper_first = first_letter.toUpperCase();
-    let final_word = upper_first + lower_choice.slice(1, );
-    let inclusion = myArray.includes(final_word);
-    if (inclusion !== true){
-        console.log("Please choose one of the available options and try again.");
-    } else {
-        return final_word;
-    }
+function playRound(choice, computer){
+    let result = document.getElementById('h3-place');
+    let compResult = document.getElementById('h3-place-2')
+    if (!result) {
+        result = document.createElement('h3');
+        compResult = document.createElement('h3')
+        result.setAttribute("id", "h3-place");
+        compResult.setAttribute("id", "h3-place-2")
+        let ele = document.getElementsByClassName("result")[0];
+        ele.appendChild(result);
+        ele.appendChild(compResult);
+    }    
+    let contentNode = document.createTextNode(choice);
+    let contentNodeComp = document.createTextNode(computer);
+    result.textContent = contentNode.textContent;
+    compResult.textContent = contentNodeComp.textContent;
 }
 
-function oneGame(getComputerChoice, userChoice){
-    let x = "";
-    if (getComputerChoice === "Rock" && userChoice === "Paper"){
-        x = ("Player wins!");
-    } else if (getComputerChoice === "Paper" && userChoice === "Rock"){
-        x = ("Computer wins!");
-    } else if (getComputerChoice === "Scissors" && userChoice === "Paper"){
-        x = ("Computer wins!");
-    } else if (getComputerChoice === "Paper" && userChoice === "Scissors"){
-        x = ("Player wins!");
-    } else if (getComputerChoice === "Rock" && userChoice === "Scissors"){
-        x = ("Computer wins!");
-    } else if (getComputerChoice === "Scissors" && userChoice === "Rock"){
-        x = ("Player wins!");
-    } else {
-        x = ("Draw!");
-    }
-    return x;
-}
+let buttons = document.querySelectorAll("button");
+buttons.forEach(function(button){
+    button.addEventListener("click", function() {
+        let computerVar = getComputerChoice();
+        playRound(button.value, computerVar);
 
-
-
-function game(){
-    for (let i = 0; i < 5; i++){
-        let oneGameVar = oneGame(getComputerChoice(), userChoice());
-        console.log(oneGameVar);
-    }
-}
-
-
-finalGame = game();
-console.log(finalGame);
+    });
+})
