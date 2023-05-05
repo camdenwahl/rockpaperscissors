@@ -1,0 +1,35 @@
+body {
+    background-color: bisque;
+}
+
+.result {
+    color: white;
+    background-color: yellowgreen;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#h3-place-2 {
+    border-radius: 10px;
+    padding: 50px;
+    margin: 10%;
+    width: 20%;
+    background-color: brown;
+}
+
+#h3-place {
+    border-radius: 10px;
+    padding: 50px;
+    width: 20%;
+    background-color:darkgreen;
+}
+
+#h2-place {
+    border-radius: 10px;
+    padding: 50px;
+    width: 20%;
+    background-color: blueviolet;
+}
